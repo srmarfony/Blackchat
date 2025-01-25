@@ -323,6 +323,7 @@
                 return;
             }
 
+            // Asegurarse de que los datos coinciden con la sala creada
             if (joinRoomNameInput === roomName && joinRoomPasswordInput === roomPassword && joinRoomCodeInput === roomCode) {
                 userName = joinNameInput;
                 document.getElementById("joinRoomContainer").style.display = "none";
@@ -381,7 +382,7 @@
             createRoomContainer.style.display = (createRoomContainer.style.display === "none" || createRoomContainer.style.display === "") ? "flex" : "none";
         }
 
-        // Función para verificar si se presionó Enter
+        // Verificar si se presionó Enter para enviar mensaje
         function checkEnter(event) {
             if (event.key === "Enter") {
                 sendMessage();
