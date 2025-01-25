@@ -245,7 +245,6 @@
     <div class="join-room-container" id="joinRoomContainer">
         <h1>Unirse a una sala</h1>
         <input type="text" id="joinNameInput" placeholder="Tu nombre...">
-        <input type="text" id="joinRoomNameInput" placeholder="Nombre de la sala...">
         <input type="password" id="joinRoomPasswordInput" placeholder="Contraseña...">
         <input type="text" id="joinRoomCodeInput" placeholder="Código de la sala...">
         <button onclick="joinRoom()">Unirse</button>
@@ -314,17 +313,16 @@
         // Unirse a una sala
         function joinRoom() {
             const joinNameInput = document.getElementById("joinNameInput").value.trim();
-            const joinRoomNameInput = document.getElementById("joinRoomNameInput").value.trim();
             const joinRoomPasswordInput = document.getElementById("joinRoomPasswordInput").value.trim();
             const joinRoomCodeInput = document.getElementById("joinRoomCodeInput").value.trim();
 
-            if (joinNameInput === "" || joinRoomNameInput === "" || joinRoomPasswordInput === "" || joinRoomCodeInput === "") {
+            if (joinNameInput === "" || joinRoomPasswordInput === "" || joinRoomCodeInput === "") {
                 alert("Por favor, ingresa todos los campos.");
                 return;
             }
 
-            // Asegurarse de que los datos coinciden con la sala creada
-            if (joinRoomNameInput === roomName && joinRoomPasswordInput === roomPassword && joinRoomCodeInput === roomCode) {
+            // Verificar si la contraseña y el código coinciden
+            if (joinRoomPasswordInput === roomPassword && joinRoomCodeInput === roomCode) {
                 userName = joinNameInput;
                 document.getElementById("joinRoomContainer").style.display = "none";
                 document.getElementById("chatContainer").style.display = "flex";
@@ -382,7 +380,7 @@
             createRoomContainer.style.display = (createRoomContainer.style.display === "none" || createRoomContainer.style.display === "") ? "flex" : "none";
         }
 
-        // Verificar si se presionó Enter para enviar mensaje
+        // Función para verificar si se presionó Enter
         function checkEnter(event) {
             if (event.key === "Enter") {
                 sendMessage();
